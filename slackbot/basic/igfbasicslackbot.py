@@ -75,9 +75,10 @@ class IgfBasicSlackBot:
         value=m.group(5)
         if key.lower()=='project':
           tmp_dir=get_temp_dir()
-          file_plot, msg=_get_project_status(project_igf_id=value,\
-                                            data_file=project_data,\
-                                            output_file=os.path.join(tmp_dir,'project_data.png'))
+          file_plot, msg=IgfBasicSlackBot.\
+                         _get_project_status(project_igf_id=value,\
+                                             data_file=project_data,\
+                                             output_file=os.path.join(tmp_dir,'project_data.png'))
         else:
           msg='No option present for keyword {0}, available options are: project'.\
               format(key)
