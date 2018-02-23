@@ -1,5 +1,5 @@
 import argparse
-from slackbot.basic.igfbasicslackBot  import IgfBasicSlackBot
+from slackbot.basic.igfbasicslackbot  import IgfBasicSlackBot
 
 parser=argparse.ArgumentParser()
 parser.add_argument('-s','--slack_config', required=True, help='Slack configuration json file')
