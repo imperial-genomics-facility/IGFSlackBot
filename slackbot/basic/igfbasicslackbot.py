@@ -58,7 +58,7 @@ class IgfBasicSlackBot:
       raise
 
   @staticmethod
-  def calculate_reply(user_input,project_data):
+  def _calculate_reply(user_input,project_data):
     '''
     A static method for calculation reply for the user input
     
@@ -75,7 +75,7 @@ class IgfBasicSlackBot:
         value=m.group(5)
         if key.lower()=='project':
           tmp_dir=get_temp_dir()
-          file_plot, msg=get_project_status(project_igf_id=value,\
+          file_plot, msg=_get_project_status(project_igf_id=value,\
                                             data_file=project_data,\
                                             output_file=os.path.join(tmp_dir,'project_data.png'))
         else:
@@ -117,10 +117,10 @@ class IgfBasicSlackBot:
       igf_slack=self.igf_slack
       if igf_slack.slackobject.rtm_connect():
         while True:
-          for output in parse_slack_output(slack_rtm_output=igf_slack.slackobject.rtm_read(),
+          for output in _parse_slack_output(slack_rtm_output=igf_slack.slackobject.rtm_read(),
                                            bot_id=igf_slack.slack_bot_id, 
                                            channel_id=igf_slack.slack_channel_id):
-            file_plot,message=calculate_reply(user_input=output['text'])
+            file_plot,message=_calculate_reply(user_input=output['text'])
             if message is None:
               igf_slack.post_file_to_channel(filepath=file_plot,
                                              thread_ts=output['ts'])
