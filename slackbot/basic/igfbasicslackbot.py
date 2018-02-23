@@ -88,7 +88,7 @@ class IgfBasicSlackBot:
       raise
 
   @staticmethod
-  def parse_slack_output(slack_rtm_output, bot_id, channel_id):
+  def _parse_slack_output(slack_rtm_output, bot_id, channel_id):
     '''
     A static method for parsing slack realtime output
     
