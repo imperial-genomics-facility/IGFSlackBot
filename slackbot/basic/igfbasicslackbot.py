@@ -117,10 +117,10 @@ class IgfBasicSlackBot:
       igf_slack=self.igf_slack
       if igf_slack.slackobject.rtm_connect():
         while True:
-          for output in _parse_slack_output(slack_rtm_output=igf_slack.slackobject.rtm_read(),
-                                           bot_id=igf_slack.slack_bot_id, 
-                                           channel_id=igf_slack.slack_channel_id):
-            file_plot,message=_calculate_reply(user_input=output['text'])
+          for output in self._parse_slack_output(slack_rtm_output=igf_slack.slackobject.rtm_read(),
+                                                 bot_id=igf_slack.slack_bot_id, 
+                                                 channel_id=igf_slack.slack_channel_id):
+            file_plot,message=self._calculate_reply(user_input=output['text'])
             if message is None:
               igf_slack.post_file_to_channel(filepath=file_plot,
                                              thread_ts=output['ts'])
