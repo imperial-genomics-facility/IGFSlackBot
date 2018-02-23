@@ -114,6 +114,7 @@ class IgfBasicSlackBot:
     A method for starting Basic slackbot
     '''
     try:
+      igf_slack=self.igf_slack
       if igf_slack.slackobject.rtm_connect():
         while True:
           for output in parse_slack_output(slack_rtm_output=igf_slack.slackobject.rtm_read(),
